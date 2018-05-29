@@ -1,0 +1,71 @@
+
+
+1. Đây là một design pattern được tạo ra để code có thể tuân thủ nguyên lý Dependency Inversion, 
+IoC tạo ra các đối tượng, kết nối chúng, quản lý vòng đời của các đối tượng, thông qua Dependency Injection quản lý các đội tượng tạo nên ứng dụng
+Dependecy Injection thực hiện nguyên lý Dependecy Inversion: các lớp ko giao tiếp trực tiếp với nhau và thông qua interface, lớp bậc thấp sẽ implement interface và lớp bậc
+cao sẽ gọi lớp bậc thấp thông qua interface, Việc khởi tạo các đối tượng lớp cấp thấp sẽ do DI Container thực hiện. Việc lớp nào gắng với interface nào sẽ được config trong
+xml, hoặc java hoặc dùng anotation
+Dependency Injection giảm thiểu được sự phụ thuộc giữa các module, dễ dàng trong việc thay đổi module và testing
+
+
+
+Aspect Oriented Programming (AOP) – lập trình hướng khía cạnh: là một kỹ thuật lập trình (kiểu như lập trình hướng đối tượng) nhằm phân tách chương trình thành cách moudule riêng rẽ, phân biệt, không phụ thuộc nhau.
+
+
+
+
+Spring framework là gì?
+
+Spring framework là open source framework, được xây dựng trên 2 nguyên tắc chính là dependency injection và Aspect Oriented Programming.
+bằng cách sử dụng dependency injection spring framework đạt được kỹ thuật loose coupling giữa các component khác nhau.
+Trong hệ sinh thái spring framework, còn cung các tính năng với mục đích cụ thể như với sercurity thì có spring sercurity, Spring Restful với lập trình api hay webservice, spring jpa, hibernate, jdbc.
+
+Lợi ích:
+
+Spring cho phép lập trình viên sử dụng POJOs. Việc sử dụng POJOs giúp bạn không phải làm việc với EJB, ứng dụng, các luồng chạy, cấu hình… đơn giản hơn rất nhiều.
+Làm giảm đi sự phụ thuộc giữa các components khác nhau của ứng dụng, Spring IoC container làm nhiệm vụ khởi tạo resources hoặc beans và "tiêm - inject" chúng theo sự phụ thuộc khác nhau.
+Spring được tổ chức theo kiểu mô đun. Số lượng các gói và các lớp khá nhiều, nhưng bạn chỉ cần quan tâm đến những gì bạn cần và không cần quan tâm đến phần còn lại.
+Spring hỗ trợ sử dụng khá nhiều công nghệ như ORM Framework, các logging framework, JEE, các thư viện tạo lịch trình (Quartz và JDK timer)…
+Module Web của Spring được thiết kế theo mô hình MVC nên nó cung cấp đầy đủ các tính năng giúp thay thế các web framework khác như Struts.
+…
+
+OOP (Object Oriented Programming):
+ - Tính đóng gói: là tính chất thể hiện qua việc hạn chế access vào các thuộc tính, phương thức hay thành phần của object, muốn truy cập được thì phải thông qua phương thức setter, getter của các thành phần này tạo ra
+ - Tính trừu tượng: là Thể hiện qua các abstract class, hay abstract method trong interface. Chưa cần khai báo các thành phần bên trong của class mà chỉ cần khai báo tên của các abstract method để class con kế thừa và thực hiện. 
+ mục đích của tính trừu tượng là tập hợp những hành vi chung của thực thể.
+ - Tính Kế Thừa: Việc lớp con có thể sử dụng lại các thuộc tính, phương thức hay các thành của lớp cha, hay thưc hiện cụ thể method abstract của lớp cha. Mục đích tính kế thừa này để dễ mở rộng và hạn chế lặp code.
+ - Tính đa hình: Việc lớp con có thể override lại method đã được kế thừa ở lớp cha đẻ tạo nên 1 hành vi cụ thể, hay trong cùng 1 lớp có thể overload lại 1 method. Mục đích của tính đa hình là để triển khai cụ thể ở class con.
+ 
+
+ 
+Dependency Injection:
+
+Java Dependency Injection design pattern cho phép chúng ta loại từ việc phụ thuộc vào hard code, các đối tượng sẽ ko phụ thuộc vào nhau và làm cho app trở nên linh hoạt trong việc tích hợp,
+có khả năng mở rộng và maintain.
+Các class không giao tiếp trực tiếp với nhau mà thông qua interface hoặc lớp trừu tượng, class cấp thấp sẽ implement interface và module cấp cao sẽ gọi module cấp thấp thông qua interface
+Benifits:
++ Tách biệt chức năng, khái niệm
++ Giảm lượng Code trùng lặp trong các application class bởi vì tất cả các công việc để khởi tạo dependencies được xử lý bởi the injector component.
++ Việc các component có thể cấu hình giúp ứng dụng dễ dàng mở rộng
++ Dễ dàng cho Unit test
+
+IoC: Spring IoC container là
++ nơi khởi tạo đối tượng, quản lý vòng đời các đối tượng, kết nối các đối tượng.
++ được khởi tạo khi application được start và khi 1 bean được request dependencies sẽ được tự động inject
+
+
+Spring bean: bất kỳ object nào được khởi tạo và được quản lý bởi spring container thì là 1 spring bean, nó có thể là 1 lớp POJOs, 1 service, repository, model.
+
+Spring Bean Scopes:
+Singelton: với scope này bean sẽ được khởi tạo và được lưu trong bộ nhớ casche, khi nào request nó sẽ được mang ra sử dụng. nó là scope mặc định
+Prototype: với scope này thì bean sẽ được new mỗi khi được request.
+Request: bean sẽ được tạo ra khi có 1 HTTP request
+Session: bean sẽ được tạo ra cho mỗi HTTP Session
+Global Session: bean sẽ được tạo ra cho mỗi HTTP Session
+
+
+
+
+
+
+
